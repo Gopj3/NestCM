@@ -4,11 +4,18 @@ import {AppService} from './app.service';
 import {TypeOrmModule} from "@nestjs/typeorm";
 import {ConfigModule, ConfigService} from '@nestjs/config';
 import {DataSource} from "typeorm";
-
+import {AutomapperModule} from "@automapper/nestjs";
+import {classes} from "@automapper/classes";
+import {AuthModule} from "./modules/auth/auth.module";
+import {UserModule} from "./modules/user/user.module";
+import {UserRepository} from "./modules/user/user.repository";
 
 @Module({
     imports: [
         ConfigModule.forRoot({ isGlobal: true }),
+        AutomapperModule.forRoot({
+            strategyInitializer: classes(),
+        }),
         TypeOrmModule.forRootAsync({
             useFactory: (configService: ConfigService) => ({
                 type: 'mysql',
@@ -20,15 +27,19 @@ import {DataSource} from "typeorm";
                 synchronize: true,
                 subscribers: [],
                 logging: true,
-                entities: [__dirname + 'src/entities/*.ts'],
+                entities: [__dirname + '/../**/*.entity.{js,ts}'],
                 migrations: [__dirname + 'migrations/*.ts'],
                 autoLoadEntities: true,
             }),
             inject: [ConfigService],
         }),
+        AuthModule,
+        UserModule
     ],
     controllers: [AppController],
-    providers: [AppService],
+    providers: [
+        AppService
+    ],
     exports: [ConfigModule]
 })
 

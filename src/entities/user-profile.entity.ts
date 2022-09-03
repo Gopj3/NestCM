@@ -1,9 +1,9 @@
 import {Entity, Column, PrimaryGeneratedColumn, OneToOne, JoinColumn} from 'typeorm';
 import {AbstractEntity} from "../common/entities/abstract.entitiy";
-import {User} from "./User";
+import {UserEntity} from "./user.entity";
 
 @Entity({name: 'user_profiles'})
-export class UserProfile extends AbstractEntity {
+export class UserProfileEntity extends AbstractEntity {
     @Column()
     firstName: string;
 
@@ -17,13 +17,13 @@ export class UserProfile extends AbstractEntity {
     avatar: string;
 
     @OneToOne(
-        () => User,
-        (user: User) => user.userProfile,
+        () => UserEntity,
+        (user: UserEntity) => user.userProfile,
         {
             nullable: false,
             onDelete: 'CASCADE'
         }
     )
     @JoinColumn()
-    user: User;
+    user: UserEntity;
 }

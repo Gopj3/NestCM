@@ -2,8 +2,9 @@ import { DataSource } from 'typeorm';
 import { ConfigService } from '@nestjs/config';
 const configService = new ConfigService();
 import { config } from 'dotenv';
-import {UserProfile} from "../src/entities/UserProfile";
-import {User} from "../src/entities/User";
+import {UserProfileEntity} from "../src/entities/user-profile.entity";
+import {UserEntity} from "../src/entities/user.entity";
+import {Init1662229145564} from "../migrations/1662229145564-Init";
 
 config();
 
@@ -17,11 +18,6 @@ export default new DataSource({
     synchronize: true,
     subscribers: [],
     logging: true,
-    entities: [
-        User,
-        UserProfile
-    ],
-    migrations: [
-
-    ]
+    entities: [UserEntity, UserProfileEntity],
+    migrations: [Init1662229145564]
 });
