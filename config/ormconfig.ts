@@ -4,7 +4,6 @@ const configService = new ConfigService();
 import { config } from 'dotenv';
 import {UserProfile} from "../src/entities/UserProfile";
 import {User} from "../src/entities/User";
-import {Init1662226829076} from "../migrations/1662226829076-Init";
 
 config();
 
@@ -23,6 +22,6 @@ export default new DataSource({
         UserProfile
     ],
     migrations: [
-        Init1662226829076
+
     ]
 });
