@@ -1,5 +1,4 @@
 import {IsEmail, IsNotEmpty, IsString, MinLength} from "class-validator";
-import {Equal} from "typeorm";
 import {IsEqualTo} from "../../../decorators/isEqualTo";
 import { AutoMap } from "@automapper/classes";
 

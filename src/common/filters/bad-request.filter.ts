@@ -16,7 +16,6 @@ export class HttpExceptionFilter implements ExceptionFilter {
     constructor(public reflector: Reflector) {}
 
     catch(exception: BadRequestException, host: ArgumentsHost) {
-        console.log('kekovstvo');
         const ctx = host.switchToHttp();
         const response = ctx.getResponse<Response>();
         let statusCode = exception.getStatus();

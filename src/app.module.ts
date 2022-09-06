@@ -3,12 +3,10 @@ import {AppController} from './app.controller';
 import {AppService} from './app.service';
 import {TypeOrmModule} from "@nestjs/typeorm";
 import {ConfigModule, ConfigService} from '@nestjs/config';
-import {DataSource} from "typeorm";
 import {AutomapperModule} from "@automapper/nestjs";
 import {classes} from "@automapper/classes";
 import {AuthModule} from "./modules/auth/auth.module";
 import {UserModule} from "./modules/user/user.module";
-import {UserRepository} from "./modules/user/user.repository";
 
 @Module({
     imports: [
@@ -40,7 +38,9 @@ import {UserRepository} from "./modules/user/user.repository";
     providers: [
         AppService
     ],
-    exports: [ConfigModule]
+    exports: [
+        ConfigModule,
+    ]
 })
 
 export class AppModule {

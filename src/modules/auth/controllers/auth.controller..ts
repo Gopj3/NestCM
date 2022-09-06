@@ -1,32 +1,33 @@
 import {
     Body,
-    Controller, ForbiddenException,
-    HttpCode, HttpException,
+    Controller,
+    HttpCode,
     HttpStatus,
-    Patch,
-    Post,
-    Req, UseFilters,
-    UseGuards,
-    UseInterceptors,
+    Post
 } from '@nestjs/common';
-import {UserService} from "../../user/user.service";
 import {UserDto} from "../../user/dtos/userDto";
 import {RegisterUserDto} from "../dto/registerUserDto";
-import {QueryFailedFilter} from "../../../common/filters/query-failed.filter";
-import {HttpExceptionFilter} from "../../../common/filters/bad-request.filter";
+import {LoginUserDto} from "../dto/loginUserDto";
+import {AuthService} from "../services/auth.service";
+import {TokenPayloadDto} from "../dto/token.payload.dto";
 
 @Controller('auth')
 export class AuthController {
     constructor(
-        private readonly _userService: UserService
+        private readonly _authService: AuthService
     ) {
     }
 
     @Post('register')
     @HttpCode(HttpStatus.OK)
-    async userRegister(
-        @Body() userRegisterDto: RegisterUserDto,
-    ): Promise<UserDto> {
-       return await this._userService.registerUserAsync(userRegisterDto);
+    async userRegister(@Body() userRegisterDto: RegisterUserDto): Promise<UserDto> {
+        return await this._authService.registerUserAsync(userRegisterDto);
+    }
+
+    @Post('login')
+    @HttpCode(HttpStatus.OK)
+    async login(@Body() model: LoginUserDto): Promise<TokenPayloadDto> {
+        const user = await this._authService.validateUser(model);
+        return await this._authService.tokenize(user);
     }
 }

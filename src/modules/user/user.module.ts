@@ -1,16 +1,24 @@
 import {Module} from '@nestjs/common';
-import {UserService} from './user.service';
-import {UserRepository} from "./user.repository";
-import {TypeOrmModule} from "@nestjs/typeorm";
-import {UserEntity} from "../../entities/user.entity";
+import {UserService} from './services/user.service';
+import {UserRepository} from "./repositories/user.repository";
 import {UserProfileMapper} from "../../common/profiles/user.profile.mapper";
+import {UserProfileRepository} from "./repositories/user-profile.repository";
+import {UsersController} from "./controllers/users.controller";
 
 @Module({
     providers: [
         UserService,
         UserRepository,
-        UserProfileMapper
+        UserProfileMapper,
+        UserProfileRepository
     ],
-    exports: [UserService, UserRepository],
+    exports: [
+        UserService,
+        UserRepository,
+        UserProfileRepository
+    ],
+    controllers: [
+        UsersController
+    ]
 })
 export class UserModule {}

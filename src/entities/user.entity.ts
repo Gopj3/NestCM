@@ -16,6 +16,9 @@ export class UserEntity extends AbstractEntity {
     @Column()
     password: string;
 
+    // @Column()
+    // emailVerified: boolean = false;
+
     @OneToOne(
         () => UserProfileEntity,
         (up: UserProfileEntity) => up.user,
