@@ -3,7 +3,7 @@ import {AutomapperProfile, InjectMapper} from "@automapper/nestjs";
 import {createMap, forMember, ignore, mapFrom, Mapper, MappingProfile} from "@automapper/core";
 import {Injectable} from "@nestjs/common";
 import {UserEntity} from "../../entities/user.entity";
-import {RegisterUserDto} from "../../modules/auth/dto/registerUserDto";
+import {RegisterUserDto} from "../../modules/auth/dto/register.user.dto";
 import {UserDto} from "../../modules/user/dtos/userDto";
 
 @Injectable()

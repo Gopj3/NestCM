@@ -6,8 +6,8 @@ import {
     Post
 } from '@nestjs/common';
 import {UserDto} from "../../user/dtos/userDto";
-import {RegisterUserDto} from "../dto/registerUserDto";
-import {LoginUserDto} from "../dto/loginUserDto";
+import {RegisterUserDto} from "../dto/register.user.dto";
+import {LoginUserDto} from "../dto/login.user.dto";
 import {AuthService} from "../services/auth.service";
 import {TokenPayloadDto} from "../dto/token.payload.dto";
 

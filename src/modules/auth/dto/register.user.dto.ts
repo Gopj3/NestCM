@@ -1,5 +1,5 @@
 import {IsEmail, IsNotEmpty, IsString, MinLength} from "class-validator";
-import {IsEqualTo} from "../../../decorators/isEqualTo";
+import {IsEqualTo} from "../../../decorators/is.equal.to";
 import { AutoMap } from "@automapper/classes";
 
 export class RegisterUserDto {

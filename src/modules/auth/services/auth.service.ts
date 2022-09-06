@@ -2,14 +2,14 @@ import { Injectable } from '@nestjs/common';
 import {JwtService} from "@nestjs/jwt";
 import {UserRepository} from "../../user/repositories/user.repository";
 import {UserEntity} from "../../../entities/user.entity";
-import {RegisterUserDto} from "../dto/registerUserDto";
+import {RegisterUserDto} from "../dto/register.user.dto";
 import {UserDto} from "../../user/dtos/userDto";
 import {UtilsService} from "../../../utils/services/utils.service";
 import {InjectMapper} from "@automapper/nestjs";
 import {Mapper} from "@automapper/core";
 import {TokenPayloadDto} from "../dto/token.payload.dto";
 import {JwtConstants} from "../../../common/constants/JWT";
-import {LoginUserDto} from "../dto/loginUserDto";
+import {LoginUserDto} from "../dto/login.user.dto";
 import {UserNotFoundException} from "../../../common/exceptions/user.not.found.exception";
 import {InvalidCredentialsException} from "../../../common/exceptions/invalid-credentials.exception";
 

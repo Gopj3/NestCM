@@ -2,7 +2,7 @@ import {Injectable} from '@nestjs/common';
 import {InjectRepository} from "@nestjs/typeorm";
 import {UserEntity} from "../../../entities/user.entity";
 import {Repository} from "typeorm";
-import {RegisterUserDto} from "../../auth/dto/registerUserDto";
+import {RegisterUserDto} from "../../auth/dto/register.user.dto";
 import {UserRepository} from "../repositories/user.repository";
 import {InjectMapper} from "@automapper/nestjs";
 import {Mapper} from "@automapper/core";
