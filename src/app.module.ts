@@ -7,6 +7,7 @@ import {AutomapperModule} from "@automapper/nestjs";
 import {classes} from "@automapper/classes";
 import {AuthModule} from "./modules/auth/auth.module";
 import {UserModule} from "./modules/user/user.module";
+import {SnakeNamingStrategy} from "typeorm-naming-strategies";
 
 @Module({
     imports: [
@@ -24,6 +25,7 @@ import {UserModule} from "./modules/user/user.module";
                 database: configService.get('DB_DATABASE'),
                 synchronize: true,
                 subscribers: [],
+                namingStrategy: new SnakeNamingStrategy(),
                 logging: true,
                 entities: [__dirname + '/../**/*.entity.{js,ts}'],
                 migrations: [__dirname + 'migrations/*.ts'],
