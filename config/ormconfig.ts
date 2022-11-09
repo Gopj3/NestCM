@@ -1,14 +1,11 @@
 import { DataSource } from 'typeorm';
 import { ConfigService } from '@nestjs/config';
-const configService = new ConfigService();
 import { config } from 'dotenv';
 import {UserProfileEntity} from "../src/entities/user-profile.entity";
 import {UserEntity} from "../src/entities/user.entity";
-import {ProjectEntity} from "../src/entities/project.entity";
-import {ProjectUserEntity} from "../src/entities/project-user.entity";
 import {SnakeNamingStrategy} from "typeorm-naming-strategies";
-import {InitMigration1662502021005} from "../migrations/1662502021005-Init_Migration";
 
+const configService = new ConfigService();
 config();
 
 export default new DataSource({
@@ -22,6 +19,6 @@ export default new DataSource({
     namingStrategy: new SnakeNamingStrategy(),
     subscribers: [],
     logging: true,
-    entities: [UserEntity, UserProfileEntity, ProjectEntity, ProjectUserEntity],
-    migrations: [InitMigration1662502021005]
+    entities: [UserEntity, UserProfileEntity],
+    migrations: []
 });

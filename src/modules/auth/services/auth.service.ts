@@ -26,7 +26,6 @@ export class AuthService {
      * @param model <LoginUserDto>
      */
     public async validateUser(model: LoginUserDto): Promise<UserEntity> {
-        console.log(model);
         const {email, password} = model;
         const user = await this._userRepo.findOneBy({email});
         console.log(user);
