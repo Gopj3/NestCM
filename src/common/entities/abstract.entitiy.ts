@@ -1,19 +1,23 @@
-import {CreateDateColumn, PrimaryGeneratedColumn, UpdateDateColumn} from "typeorm";
-import {AutoMap} from "@automapper/classes";
+import {
+  CreateDateColumn,
+  PrimaryGeneratedColumn,
+  UpdateDateColumn,
+} from "typeorm";
+import { AutoMap } from "@automapper/classes";
 
 export abstract class AbstractEntity {
-    @AutoMap()
-    @PrimaryGeneratedColumn('uuid')
-    id: string;
+  @AutoMap()
+  @PrimaryGeneratedColumn("uuid")
+  id: string;
 
-    @CreateDateColumn({
-        type: 'timestamp',
-    })
-    createdAt: Date;
+  @CreateDateColumn({
+    type: "timestamp",
+  })
+  createdAt: Date;
 
-    @UpdateDateColumn({
-        type: 'timestamp',
-        nullable: true
-    })
-    updatedAt: Date;
+  @UpdateDateColumn({
+    type: "timestamp",
+    nullable: true,
+  })
+  updatedAt: Date;
 }
